@@ -1,0 +1,36 @@
+server:
+  shutdown: graceful
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+  tomcat:
+    uri-encoding: UTF-8
+  port: 8888
+
+spring:
+  application:
+    name: config-service
+  profiles:
+    active: native
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: /Volumes/THJ-DATA/git/springcloud_msa/ecommerce/native-file-repo
+        git:
+          #uri: file:///Volumes/THJ-DATA/git/springcloud_msa/ecommerce/git-local-repo
+          uri: https://github.com/TotoHyojunTak/msa_cloudconfig
+          default-label: main
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
